@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Slideshow</title>
+  <style>
+    .slideshow-container {
+      max-width: 600px;
+      position: relative;
+      margin: auto;
+    }
+
+    .mySlides {
+      display: none;
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.3s;
+      user-select: none;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <div class="mySlides">
+    <img src="https://via.placeholder.com/600x400?text=Photo+1" alt="Photo 1">
+  </div>
+
+  <div class="mySlides">
+    <img src="https://via.placeholder.com/600x400?text=Photo+2" alt="Photo 2">
+  </div>
+
+  <div class="mySlides">
+    <img src="https://via.placeholder.com/600x400?text=Photo+3" alt="Photo 3">
+  </div>
+
+  <!-- Navigation buttons -->
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
+
+  // Optional: Auto slideshow
+  setInterval(() => {
+    plusSlides(1);
+  }, 4000); // Change image every 4 seconds
+</script>
+
+</body>
+</html>
